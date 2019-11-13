@@ -1,0 +1,14 @@
+<h1>Lista de containers</h1>
+
+<a href="/containers/new">Criar Container</a>
+
+
+<ul>
+    <% @containers.each do |c| %>
+        <li>
+            <a href="containers/<%= c['id'] %>">
+                <%= c['name'] %>
+            </a>
+        </li>
+    <% end %>
+</ul>

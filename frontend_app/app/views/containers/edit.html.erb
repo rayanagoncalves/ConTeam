@@ -1,0 +1,11 @@
+<h1>New</h1>
+
+<%= form_tag "/containers/#{@container['id']}", method: :put do %>
+
+    <label>Nome:</label>
+    <input name="name" value="<%= @container['name'] %>" />
+    <label>Image:</label>
+    <input name="image" value="<%= @container['image'] %>" />
+    <button>Atualizar</button>
+
+<% end %>

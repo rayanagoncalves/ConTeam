@@ -1,0 +1,15 @@
+<h1>Show</h1>
+
+<p>ID: <%= @container['id'] %></p>
+<p>Nome: <%= @container['name'] %></p>
+<p>Nome do container: <%= @container['container_name'] %></p>
+<p>Imagem: <%= @container['image'] %></p>
+<p>created_at: <%= @container['created_at'] %></p>
+<p>updated_at: <%= @container['updated_at'] %></p>
+
+
+<a href="/containers">Voltar</a>
+|
+<a href="/containers/<%= @container['id'] %>/edit">Editar Container</a>
+|
+<a href="/containers/<%= @container['id'] %>" data-confirm="Deseja realmente deletar?" data-method="delete">Deletar Container</a>
