@@ -1,15 +1,28 @@
-<h1>Show</h1>
+<html>
+    <head>
+        <title>ConTeam</title>
+        <style type="text/css">
+            body {
+                background-color: #B4DAF7;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <center><h1>Container <%= @container['id'] %></h1></center>
 
-<p>ID: <%= @container['id'] %></p>
-<p>Nome: <%= @container['name'] %></p>
-<p>Nome do container: <%= @container['container_name'] %></p>
-<p>Imagem: <%= @container['image'] %></p>
-<p>created_at: <%= @container['created_at'] %></p>
-<p>updated_at: <%= @container['updated_at'] %></p>
+         <center><p>ID: <%= @container['id'] %></p></center>
+        <center><p>Nome: <%= @container['name'] %></p></center>
+        <center><p>Nome do container: <%= @container['container_name'] %></p></center>
+        <center><p>Imagem: <%= @container['image'] %></p></center>  
+        <center><p>created_at: <%= @container['created_at'] %></p></center>
+        <center><p>updated_at: <%= @container['updated_at'] %></p></center>
+            
+        <center><a href="/containers">Voltar</a></center>
+            
+        <center><a href="/containers/<%= @container['id'] %>/edit">Editar Container</a></center>
+            
+        <center><a href="/containers/<%= @container['id'] %>" data-confirm="Deseja realmente deletar?" data-method="delete">Deletar Container</a></center>
 
-
-<a href="/containers">Voltar</a>
-|
-<a href="/containers/<%= @container['id'] %>/edit">Editar Container</a>
-|
-<a href="/containers/<%= @container['id'] %>" data-confirm="Deseja realmente deletar?" data-method="delete">Deletar Container</a>
+    </body>
+</html>

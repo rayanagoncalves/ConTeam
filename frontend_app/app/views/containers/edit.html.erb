@@ -1,11 +1,24 @@
-<h1>New</h1>
+<html>
+    <head>
+        <title>ConTeam</title>
+        <style type="text/css">
+            body {
+                background-color: #B4DAF7;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+    <center><h1>Editar Container</h1></center>
 
-<%= form_tag "/containers/#{@container['id']}", method: :put do %>
+        <%= form_tag "/containers/#{@container['id']}", method: :put do %>
+            
+    <center><label>Nome:</label>
+            <input name="name" value="<%= @container['name'] %>" /></center>
+    <center><label>Imagem:</label>
+            <input name="image" value="<%= @container['image'] %>" /></center>
+   <center><button>Atualizar</button></center>
+        <% end %>
+    </body>
 
-    <label>Nome:</label>
-    <input name="name" value="<%= @container['name'] %>" />
-    <label>Image:</label>
-    <input name="image" value="<%= @container['image'] %>" />
-    <button>Atualizar</button>
-
-<% end %>
+</html>

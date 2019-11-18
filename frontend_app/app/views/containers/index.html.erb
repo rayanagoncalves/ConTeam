@@ -1,14 +1,26 @@
-<h1>Lista de containers</h1>
+<html>
+    <head>
+        <title>ConTeam</title>
+        <style type="text/css">
+            body {
+                background-color: #B4DAF7;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Lista de containers</h1>
+            
+            <ul>
+                <% @containers.each do |c| %>
+                    <li>
+                        <a href="containers/<%= c['id'] %>">
+                            <%= c['name'] %>
+                        </a>
+                    </li>
+                <% end %>
+            </ul>
 
-<a href="/containers/new">Criar Container</a>
-
-
-<ul>
-    <% @containers.each do |c| %>
-        <li>
-            <a href="containers/<%= c['id'] %>">
-                <%= c['name'] %>
-            </a>
-        </li>
-    <% end %>
-</ul>
+            <a href="/containers/new">Criar Container</a>
+    </body>
+</html>

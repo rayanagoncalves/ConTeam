@@ -1,84 +1,23 @@
-<meta charset="UTF-8">
-<link rel="stylesheet" href="assets/semantic.min.css">
-<script src="assets/jquery.min.js"></script>
-<script src="assets/semantic.min.js"></script>
-<style type="text/css">
-    body {
-        background-color: #B4DAF7;
-    }
-    body > .grid {
-        height: 100%;
-    }
-    .column {
-        max-width: 450px;
-    }
-</style>
-<script>
-    $(document).ready(function() {
-        $('.ui.form').form({
-            fields: {
-                email: {
-                    identifier  : 'email',
-                    rules: [
-                        {
-                            type   : 'empty',
-                            prompt : 'Por favor, insira seu e-mail'
-                        },
-                        {
-                            type   : 'email',
-                            prompt : 'Por favor, insira um e-mail válido'
-                        }
-                    ]
-                },
-                password: {
-                    identifier  : 'password',
-                    rules: [
-                        {
-                            type   : 'empty',
-                            prompt : 'Por favor, insira sua senha'
-                        },
-                        {
-                            type   : 'length[6]',
-                            prompt : 'Sua senha deve ter no mínimo 6 caracteres'
-                        }
-                    ]
-                }
+<html>
+    <head>
+        <title>ConTeam</title>
+        <style type="text/css">
+            body {
+                background-color: #B4DAF7;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
-        });
-    });
-</script>
-<body>
-    <div class="ui middle aligned center aligned grid">
-        <div class="column">
-            <h2 class="ui blue image header">
-                <div class="content">
-                    Conecte-se a sua conta
-                </div>
-            </h2>
-            <form class="ui large form">
-            <div class="ui stacked segment">
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address">
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
-                    </div>
-                </div>
-                <div class="ui fluid large blue submit button">Login</div>
-            </div>
-    
-            <div class="ui error message"></div>
-    
-            </form>
-    
-            <div class="ui message">
-                Novo por aqui? <a href="#">Cadastre-se</a>
-            </div>
-        </div>
-    </div>
-</body>
+        </style>
+    </head>
+    <body>
+        <center><h1>Conecte-se a sua conta</h1></center>
+        <form action="http://127.0.0.1:5000/auth/login" method="post">
+            <center>E-mail:<br>
+            <input type="text" name="email"><br></center>
+            <center>Senha:<br>
+            <input type="text" name="password"><br></center>
+            <center><input type="submit" value="Login"></center>
+        </form>
+
+      <center><p>Novo por aqui?</p><a href="/containers/cadastro">Cadastre-se</a></center>
+    </body>
+</html>

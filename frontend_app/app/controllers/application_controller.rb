@@ -8,4 +8,13 @@ class ApplicationController < ActionController::Base
             })
         return JSON.parse(resp) rescue nil
     end
+
+    def rest_api2(uri, method, data={})
+    url = "http://127.0.0.1:5000/#{uri}"
+    resp = RestClient::Request.execute(
+        method: method, url: url, headers: {
+            params: data
+        })
+    return JSON.parse(resp) rescue nil
+end
 end

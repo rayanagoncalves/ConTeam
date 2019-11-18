@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Cadastro</title>
+        <style type="text/css">
+            body {
+                background-color: #B4DAF7;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="http://127.0.0.1:5000/users" method="post">
+        <center><h1>Cadastre-se:</h1></center>
+            <center>Nome:<br>
+            <input type="text" name="name"><br></center>
+        <center>E-mail:<br>
+            <input type="text" name="email"><br></center>
+        <center>Senha:<br>
+            <input type="text" name="password"><br></center>
+        <center>Confirme sua senha:<br>
+            <input type="text" name="password_confirmation"><br></center>
+        <center><input type="submit" value="Enviar"></center>
+        <center><a href="/containers/login">Voltar</a></center>
+        </form>
+    </body>
+</html>

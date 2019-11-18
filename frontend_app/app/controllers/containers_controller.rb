@@ -8,10 +8,13 @@ class ContainersController < ApplicationController
     end
 
     def login
-
+      
     end
 
     def edit
+    end
+
+    def cadastro
     end
 
     def create

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'containers#login'
   get 'containers', to: "containers#index"
+  get 'containers/login/show', to: "containers#show"
+  get 'containers/cadastro', to: "containers#cadastro"
+  get 'containers/login', to: "containers#login"
   get 'containers/new', to: "containers#new"
   post 'containers', to: "containers#create"
   get 'containers/:id', to: "containers#show"
