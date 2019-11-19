@@ -7,18 +7,77 @@
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
         </style>
+        <script>
+            $(document).ready(function() {
+                $('.ui.dropdown').dropdown();
+                $("select[name=image]").parent().dropdown('set selected', "<%= @container['image'] %>");
+                $('.ui.form').form({
+                    fields: {
+                        name: {
+                            identifier  : 'name',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Por favor, insira um nome'
+                                }
+                            ]
+                        },
+                        dropdown: {
+                            identifier  : 'image',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Por favor, selecione uma imagem'
+                                }
+                            ]
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-    <center><h1>Editar Container</h1></center>
-
-        <%= form_tag "/containers/#{@container['id']}", method: :put do %>
-            
-    <center><label>Nome:</label>
-            <input name="name" value="<%= @container['name'] %>" /></center>
-    <center><label>Imagem:</label>
-            <input name="image" value="<%= @container['image'] %>" /></center>
-   <center><button>Atualizar</button></center>
-        <% end %>
+        <div class="ui menu">
+            <div class="header item">
+                ConTeam
+                <i class="trademark tiny icon" style="margin-top: 8px;margin-left: 1px;"></i>
+            </div>
+            <div class="right menu">
+                <a class="item">Logout</a>
+            </div>
+        </div>
+        <div class="ui blue segment" style="max-width: 99%;margin: 0 auto;">
+            <article class="ui header">
+                <i class="columns icon"></i>
+                Edição de Container
+            </article>
+            <div class="ui inverted divider"></div>
+            <div class="ui equal width form">
+                    <%= form_tag "/containers/#{@container['id']}", method: :put do %>
+                    <div class="fields">
+                        <div class="field">
+                            <label>Nome</label>
+                            <input type="text" name="name" value="<%= @container['name'] %>" placeholder="Nome...">
+                        </div>
+                        <div class="field">
+                            <label>Imagem</label>
+                            <select class="ui search dropdown" name="image">
+                                <option value="">Imagens</option>
+                                <option value="redis">redis</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="text-align: end;">
+                        <a class="ui blue button" href="/containers">Voltar</a>
+                        <a class="ui red button" href="/containers/<%= @container['id'] %>" data-confirm="Deseja realmente deletar?" data-method="delete">
+                            Apagar
+                        </a>
+                        <button class="ui submit green button">Salvar</button>
+                    </div>
+                    <div class="ui error message"></div>    
+                <% end %>
+            </div>
+        </div>
     </body>
 
 </html>

@@ -9,18 +9,61 @@
         </style>
     </head>
     <body>
-        <h1>Lista de containers</h1>
-            
-            <ul>
-                <% @containers.each do |c| %>
-                    <li>
-                        <a href="containers/<%= c['id'] %>">
-                            <%= c['name'] %>
-                        </a>
-                    </li>
-                <% end %>
-            </ul>
 
-            <a href="/containers/new">Criar Container</a>
+        <div class="ui menu">
+            <div class="header item">
+                ConTeam
+                <i class="trademark tiny icon" style="margin-top: 8px;margin-left: 1px;"></i>
+            </div>
+            <div class="right menu">
+                <a class="item">Logout</a>
+            </div>
+        </div>
+        <div class="ui blue segment" style="max-width: 99%;margin: 0 auto;">
+            <article class="ui header">
+                <i class="columns icon"></i>
+                Containers
+            </article>
+            <div style="text-align: left;">
+                <a class="ui inverted primary button" href="/containers/new">
+                    <i class="plus icon"></i>
+                    Novo
+                </a>
+            </div>
+            <div class="ui inverted divider"></div>
+            <div class="ui cards">
+                <% @containers.each do |c| %>
+                    <div class="card">
+                        <div class="ui dimmer">
+                            <div class="ui text loader">Criando...</div>
+                        </div>
+                        <div class="content">
+                            <div class="header">
+                                <%= c['name'] %>
+                            </div>
+                            <div class="meta">
+                                <%= c['container_name'] %>
+                            </div>
+                            <div class="description">
+                                <article>
+                                    <b>Imagem:</b> <%= c['image'] %>
+                                </article>
+                                <article>
+                                   <b>Criado em: </b> <%= c['created_at'] %>
+                                </article>
+                                <article>
+                                    <b>Atualizado em: </b> <%= c['updated_at'] %>
+                                </article>
+                            </div>
+                        </div>
+                        
+                        <a class="ui bottom attached button" href="/containers/<%= c['id'] %>/edit">
+                            <i class="edit icon"></i>
+                            Editar Container
+                        </a>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </body>
 </html>

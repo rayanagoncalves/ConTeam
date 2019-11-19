@@ -7,18 +7,72 @@
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
         </style>
+        <script>
+            $(document).ready(function() {
+                $('.ui.dropdown').dropdown();
+                $('.ui.form').form({
+                    fields: {
+                        name: {
+                            identifier  : 'name',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Por favor, insira um nome'
+                                }
+                            ]
+                        },
+                        dropdown: {
+                            identifier  : 'image',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Por favor, selecione uma imagem'
+                                }
+                            ]
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        <center><h1>Criar container:</h1></center>
-
-        <%= form_tag '/containers', method: :post do %>
-            
-    <center><label>Nome:</label>
-    <input name="name" /></center>
-    <center><label>Imagem:</label>
-        <input name="image" /></center>
-    <center><button>Salvar</button></center>
-    <center><a href="/containers">Voltar</a></center>     
-        <% end %>
+        <div class="ui menu">
+            <div class="header item">
+                ConTeam
+                <i class="trademark tiny icon" style="margin-top: 8px;margin-left: 1px;"></i>
+            </div>
+            <div class="right menu">
+                <a class="item">Logout</a>
+            </div>
+        </div>
+        <div class="ui blue segment" style="max-width: 99%;margin: 0 auto;">
+            <article class="ui header">
+                <i class="columns icon"></i>
+                Novo Container
+            </article>
+            <div class="ui inverted divider"></div>
+                <div class="ui equal width form">
+                <%= form_tag '/containers', method: :post do %>
+                    <div class="fields">
+                        <div class="field">
+                            <label>Nome</label>
+                            <input type="text" name="name" placeholder="Nome...">
+                        </div>
+                        <div class="field">
+                            <label>Imagem</label>
+                            <select class="ui search dropdown" name="image">
+                                <option value="">Imagens</option>
+                                <option value="redis">redis</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="text-align: end;">
+                        <a class="ui blue button" href="/containers">Voltar</a>
+                        <button class="ui submit green button">Salvar</button>
+                    </div>
+                    <div class="ui error message"></div>    
+                <% end %>
+            </div>
+        </div>
     </body>
 </html>

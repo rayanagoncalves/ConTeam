@@ -1,4 +1,5 @@
 class ContainersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_container, only: [:show, :update, :destroy]
 
   # GET /containers

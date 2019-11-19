@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'containers/:id', to: "containers#show"
   put 'containers/:id', to: "containers#update"
   get 'containers/:id/edit', to: "containers#edit"
+  post 'get_token', to: "autenticacao#get_token"
   delete 'containers/:id', to: "containers#destroy"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

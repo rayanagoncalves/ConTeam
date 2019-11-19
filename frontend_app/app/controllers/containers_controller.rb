@@ -7,10 +7,6 @@ class ContainersController < ApplicationController
     def new
     end
 
-    def login
-      
-    end
-
     def edit
     end
 
@@ -37,7 +33,7 @@ class ContainersController < ApplicationController
         }
         id = params[:id]
         rest_api("containers/#{id}", :put, data)
-        redirect_to action: :show, id: id
+        redirect_to action: :index
     end
 
     def show

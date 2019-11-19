@@ -1,26 +1,119 @@
 <html>
     <head>
-        <title>Cadastro</title>
+        <title>ConTeam</title>
         <style type="text/css">
             body {
                 background-color: #B4DAF7;
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
+            body > .grid {
+                height: 100%;
+            }
+            .column {
+                max-width: 450px;
+            } 
         </style>
+        <script>
+            $(document).ready(function() {
+                $('.ui.form').form({
+                    fields: {
+                        name: {
+                            identifier  : 'name',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Insira seu nome'
+                                }
+                            ]
+                        },
+                        email: {
+                            identifier  : 'email',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Insira seu e-mail'
+                                },
+                                {
+                                    type   : 'email',
+                                    prompt : 'Insira um e-mail válido'
+                                }
+                            ]
+                        },
+                        password: {
+                            identifier  : 'password',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Insira uma senha'
+                                },
+                                {
+                                    type   : 'length[6]',
+                                    prompt : 'Sua senha deve ter no mínimo 6 caracteres'
+                                },
+                            ]
+                        },
+                        passwordConfirm: {
+                            identifier  : 'password_confirmation',
+                            rules: [
+                                {
+                                    type   : 'empty',
+                                    prompt : 'Confirme sua senha'
+                                },
+                                {
+                                    type   : 'match[password]',
+                                    prompt : 'Essas senhas não coincidem. Tentar novamente'
+                                }
+                            ]
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        <form action="http://127.0.0.1:5000/users" method="post">
-        <center><h1>Cadastre-se:</h1></center>
-            <center>Nome:<br>
-            <input type="text" name="name"><br></center>
-        <center>E-mail:<br>
-            <input type="text" name="email"><br></center>
-        <center>Senha:<br>
-            <input type="text" name="password"><br></center>
-        <center>Confirme sua senha:<br>
-            <input type="text" name="password_confirmation"><br></center>
-        <center><input type="submit" value="Enviar"></center>
-        <center><a href="/containers/login">Voltar</a></center>
-        </form>
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui blue image header">
+                    <div class="content">
+                        Cadastro
+                    </div>
+                </h2>
+                <form class="ui large form" action="http://127.0.0.1:5000/users" method="post">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <label style="text-align: left !important;">Nome</label>
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="name" placeholder="Nome">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label style="text-align: left !important;">E-mail</label>
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="email" placeholder="E-mail address">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label style="text-align: left !important;">Senha</label>
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label style="text-align: left !important;">Confirme sua senha</label>
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" name="password_confirmation" placeholder="Confirme sua senha">
+                            </div>
+                        </div>
+                        <div class="ui fluid large blue submit button">Sign-up</div>
+                    </div>
+            
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
