@@ -42,6 +42,12 @@ class ContainersController < ApplicationController
   # PATCH/PUT /containers/1
   def update
     if @container.update(container_params)
+       container_name = @container.container_name
+       container_image = @container.image
+       system "docker stop #{container_name}"
+       system "docker rm #{container_name}"
+       system "docker create --name=#{container_name} #{container_image}"
+       system "docker start #{container_name}"
       render json: @container
     else
       render json: @container.errors, status: :unprocessable_entity

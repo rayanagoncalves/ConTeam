@@ -7,6 +7,24 @@
                 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             }
         </style>
+        <script>
+            $(document).ready(function() {
+                $.each($('.ui.cards').children(), function(key, card) {
+                    var createdAtElement = $($(card).children()[1].children[2].children[1].children[1]);
+                    var updatedAtElement = $($(card).children()[1].children[2].children[2].children[1]);
+                    $(createdAtElement).html(dateFormat($(createdAtElement).html()));
+                    $(updatedAtElement).html(dateFormat($(updatedAtElement).html()));
+                });
+            });
+
+            function dateFormat(date){
+                var arrayFullDate = date.split('T');
+                var arrayTime = arrayFullDate[1].split('.');
+                var arrayDate = arrayFullDate[0].split('-');
+
+                return arrayDate[2]+'/'+arrayDate[1]+'/'+arrayDate[0].trim()+' '+arrayTime[0];
+            }
+        </script>
     </head>
     <body>
 
@@ -49,10 +67,10 @@
                                     <b>Imagem:</b> <%= c['image'] %>
                                 </article>
                                 <article>
-                                   <b>Criado em: </b> <%= c['created_at'] %>
+                                   <b>Criado em: </b><article> <%= c['created_at'] %> </article>
                                 </article>
                                 <article>
-                                    <b>Atualizado em: </b> <%= c['updated_at'] %>
+                                    <b>Atualizado em: </b><article> <%= c['updated_at'] %> </article>
                                 </article>
                             </div>
                         </div>

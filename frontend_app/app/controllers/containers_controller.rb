@@ -28,7 +28,8 @@ class ContainersController < ApplicationController
     def update
         data = {
             container: {
-                name: params[:name]
+                name: params[:name],
+                image: params[:image]
             }
         }
         id = params[:id]

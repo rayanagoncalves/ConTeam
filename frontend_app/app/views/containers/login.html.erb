@@ -44,22 +44,7 @@
                             ]
                         }
                     }
-                });
-                $("#form").submit(function(e) {
-                    e.preventDefault();
-                    
-                    var filter = {
-                        email: $('input[name=email]').val(),
-                        password: $('input[name=password]').val()
-                    }
-
-                
-                    $.post( "http://127.0.0.1:5000/auth/login", filter)
-                        .done(function( data ) {
-                            alert( "Data Loaded: " + data );
-                     });
-                   
-                 });
+                });   
             }); 
         </script>
     </head>
