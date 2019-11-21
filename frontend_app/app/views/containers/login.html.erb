@@ -44,8 +44,25 @@
                             ]
                         }
                     }
-                });   
-            }); 
+                });
+                $("#form").submit(function(e) {
+                    e.preventDefault();
+                    
+                    var filter = {
+                        email: $('input[name=email]').val(),
+                        password: $('input[name=password]').val()
+                    }
+                
+                    $.post( "http://127.0.0.1:5000/auth/login", filter)
+                        .done(function( data ) {
+                            localStorage['token'] = data.token;
+                            localStorage['exp'] = data.exp;
+                            window.open('http://127.0.0.1:3000/containers', '_self');
+                        }).fail(function(xhr,status,error) {
+                            alert('Acesso negado.');
+                         });                   
+                     });
+                });
         </script>
     </head>
     <body>
@@ -56,7 +73,7 @@
                         Conecte-se a sua conta
                     </div>
                 </h2>
-                <form id="form" class="ui large form" action="http://127.0.0.1:5000/auth/login" method="post">
+                <form id="form" class="ui large form">
                     <div class="ui stacked segment">
                         <div class="field">
                             <div class="ui left icon input">
