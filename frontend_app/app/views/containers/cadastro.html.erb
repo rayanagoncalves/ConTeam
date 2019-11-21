@@ -67,6 +67,23 @@
                         }
                     }
                 });
+                $("#form").submit(function(e) {
+                    e.preventDefault();
+                    
+                    var filter = {
+                        name: $('input[name=name]').val(),
+                        email: $('input[name=email]').val(),
+                        password: $('input[name=password]').val(),
+                        password_confirmation: $('input[name=password_confirmation]').val()
+                    }
+                
+                    $.post( "http://127.0.0.1:5000/users", filter)
+                        .done(function( data ) {
+                            localStorage['token'] = data.token;
+                            localStorage['exp'] = data.exp;
+                            window.open('http://127.0.0.1:3000/containers', '_self');
+                        });                
+                     });
             });
         </script>
     </head>
@@ -78,7 +95,7 @@
                         Cadastro
                     </div>
                 </h2>
-                <form class="ui large form" action="http://127.0.0.1:5000/users" method="post">
+                <form id="form" class="ui large form">
                     <div class="ui stacked segment">
                         <div class="field">
                             <label style="text-align: left !important;">Nome</label>

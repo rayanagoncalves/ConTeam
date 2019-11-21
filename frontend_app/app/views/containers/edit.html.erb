@@ -9,6 +9,38 @@
         </style>
         <script>
             $(document).ready(function() {
+
+                var dataExp = new Date(localStorage['exp']);
+                var dataAtual = new Date();
+                    
+                $.get( `http://127.0.0.1:5000/auth/login/check?token=${localStorage['token']}`)
+                    .done(function( data ) {
+                        if(dataExp <= dataAtual) {
+                            $('#containers').remove();
+                            $('#errorMsg').css('display', 'block');
+                            $('#exit').html('Entrar');
+                            $('#exit').attr('id', 'login');
+                            $('#login').attr('href', 'http://127.0.0.1:3000');
+                            $('#login').unbind("click");
+                        }
+                    }).fail(function(xhr,status,error) {
+                        $('#containers').remove();
+                        $('#errorMsg').css('display', 'block');
+                        $('#exit').html('Entrar');
+                        $('#exit').attr('id', 'login');
+                        $('#login').attr('href', 'http://127.0.0.1:3000');
+                        $('#login').unbind("click");
+                    });    
+
+                    $('#exit').click(function() {
+                        if(confirm("Deseja realmente sair do sistema?")) {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('exp');
+                            window.open('http://127.0.0.1:3000', '_self');
+                        }
+                      }); 
+               
+                
                 $('.ui.dropdown').dropdown();
                 $("select[name=image]").parent().dropdown('set selected', "<%= @container['image'] %>");
                 $('.ui.form').form({
@@ -43,10 +75,17 @@
                 <i class="trademark tiny icon" style="margin-top: 8px;margin-left: 1px;"></i>
             </div>
             <div class="right menu">
-                <a class="item">Logout</a>
+                <a id="exit" class="item">Sair</a>
             </div>
         </div>
-        <div class="ui blue segment" style="max-width: 99%;margin: 0 auto;">
+        <div id="errorMsg" class="ui middle aligned center aligned grid" style="display:none;">
+        <div class="column">
+            <div class="ui error info message">
+                <p>É necessário estar logado no sistema.</p>
+            </div>
+        </div>
+        </div>
+        <div  id="containers" class="ui blue segment" style="max-width: 99%;margin: 0 auto;">
             <article class="ui header">
                 <i class="columns icon"></i>
                 Edição de Container
